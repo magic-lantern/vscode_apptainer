@@ -14,12 +14,20 @@ Need to automate the following!
 `apptainer shell --writable --fakeroot vscode_test`
 
 * when done testing convert sandbox directory into container file: `apptainer build vscode.sif vscode_test`
-* Move file to desired location. Run Visual Studio Code with: `apptainer exec --bind ~/vscode_data:/opt/VSCode-linux-x64/data vscode.sif code`
+* Move file(s) to Google Cloud Storage
+  * `cd .. & tar -czf ./vscode_app.tgz ./vscode_data ./vscode_apptainer`
+  * `gsutil cp ./vscode_app.tgz gs://gcproject/Downloads/`
+* Then on destination system:
+  * `gsutil cp gs://gcproject/Downloads/vscode_app.tgz ./`
+  * `tar -xzf ./vscode_app.tgz`
+* Run Visual Studio Code with: `apptainer exec --bind ~/vscode_data:/opt/VSCode-linux-x64/data ~/vscode_apptainer/vscode.sif code`
 
 Can also setup alias as something like this:
 
 ```bash
-alias code='apptainer exec --bind ~/vscode_data:/opt/VSCode-linux-x64/data --writable-tmpfs ~/bin/vscode.sif code'
+alias code='apptainer exec --bind ~/vscode_data:/opt/VSCode-linux-x64/data --writable-tmpfs ~/vscode_apptainer/vscode.sif code'
 ```
 
 Note: `~/vscode_data` should be the location of your extensions and other userdata for VS Code."
+
+
