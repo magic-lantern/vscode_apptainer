@@ -4,7 +4,7 @@ From: ubuntu:22.04
 %post
 	apt update
 	apt upgrade -y
-	apt install -y wget gpg git apt-transport-https ca-certificates gnupg curl nano xdg-utils
+	apt install -y wget gpg git apt-transport-https ca-certificates gnupg curl nano xdg-utils gnome-keyring
 	
 	# next lines are from https://support.mozilla.org/en-US/kb/install-firefox-linux
 	install -d -m 0755 /etc/apt/keyrings
