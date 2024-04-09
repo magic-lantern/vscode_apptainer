@@ -2,13 +2,24 @@
 
 Apptainer build of Visual Studio Code
 
+## Steps to install Apptainer
+
+```bash
+sudo apt update
+sudo apt install -y software-properties-common
+sudo add-apt-repository -y ppa:apptainer/ppa
+sudo apt install -y apptainer apptainer-suid
+```
+
+See https://apptainer.org/docs/admin/main/installation.html for more installation options.
+
 ## Steps to build
 
 Need to automate the following!
 
 * build draft container from definition file: `apptainer build --sandbox vscode_test vscode.def`
 * test application as regular user:
-`apptainer exec --bind ~/vscode_data:/opt/VSCode-linux-x64/data --writeable-tmpfs vscode_test code`
+`apptainer exec --bind ~/vscode_data:/opt/VSCode-linux-x64/data --writable-tmpfs vscode_test code`
 * In my case, location where I want to run the container has no public Internet access, so I need to open code and run it to sync all plugins - takes ~20 minutes.
 * If need to fix something as root - changes must be made to definition file to be permanent
 `apptainer shell --writable --fakeroot vscode_test`
