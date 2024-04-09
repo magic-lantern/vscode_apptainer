@@ -1,2 +1,4 @@
 # don't need to store large binary file
 vscode.sif
+# dont need to save sandbox version
+vscode_test
