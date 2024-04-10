@@ -1,6 +1,11 @@
 # Visual Studio Code in an Apptainer Container
 
-Apptainer build of Visual Studio Code
+Apptainer build of Visual Studio Code.
+
+Useful guides:
+
+* https://uconn.atlassian.net/wiki/spaces/SH/pages/26270662737/Advanced+Apptainer+Guide
+* https://github.com/tensoralex/apptainer-fastai-container
 
 ## Steps to install Apptainer
 
