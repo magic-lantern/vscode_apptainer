@@ -37,7 +37,7 @@ Need to automate the following!
   * `gsutil cp gs://gcproject/Downloads/vscode_app.tgz ./`
   * `tar -xzf ./vscode_app.tgz`
   * `rm ./vscode_app.tgz`
-* Run Visual Studio Code with: `apptainer exec --bind ~/vscode_data:/opt/VSCode-linux-x64/data ~/vscode_apptainer/vscode.sif code`
+* Run Visual Studio Code with: `apptainer exec --bind ~/vscode_data:/opt/VSCode-linux-x64/data,$XDG_RUNTIME_DIR,/run/dbus --writable-tmpfs ~/vscode_apptainer/vscode.sif code` (vscode throws lots of warnings about dbus without some additional directory binds)
 
 Can also setup alias as something like this:
 
